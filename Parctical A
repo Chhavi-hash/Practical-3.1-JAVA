@@ -1,0 +1,31 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("=== User Login System ===");
+
+        // Simulating HTML form input
+        System.out.print("Enter Username: ");
+        String username = sc.nextLine();
+
+        System.out.print("Enter Password: ");
+        String password = sc.nextLine();
+
+        // Hardcoded valid credentials (like Servlet validation)
+        String validUser = "chhavi";
+        String validPass = "12345";
+
+        // Simulating Servlet login check
+        if (username.equals(validUser) && password.equals(validPass)) {
+            System.out.println("\n✅ Login Successful!");
+            System.out.println("Welcome, " + username + "!");
+        } else {
+            System.out.println("\n❌ Invalid username or password!");
+            System.out.println("Please try again.");
+        }
+
+        sc.close();
+    }
+}
