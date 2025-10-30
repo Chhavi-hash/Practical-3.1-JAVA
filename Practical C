@@ -1,0 +1,70 @@
+import java.util.*;
+
+class Attendance {
+    String studentID;
+    String date;
+    String status;
+
+    Attendance(String studentID, String date, String status) {
+        this.studentID = studentID;
+        this.date = date;
+        this.status = status;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        List<Attendance> attendanceDB = new ArrayList<>();
+
+        System.out.println("=== Student Attendance Portal ===");
+        System.out.println("1. Mark Attendance");
+        System.out.println("2. View Attendance Records");
+        System.out.print("Enter your choice: ");
+        int choice = sc.nextInt();
+        sc.nextLine(); // consume newline
+
+        switch (choice) {
+            case 1:
+                // Simulate JSP form submission → Servlet handling
+                System.out.println("\n--- Attendance Form ---");
+                System.out.print("Enter Student ID: ");
+                String id = sc.nextLine();
+                System.out.print("Enter Date (YYYY-MM-DD): ");
+                String date = sc.nextLine();
+                System.out.print("Enter Status (Present/Absent): ");
+                String status = sc.nextLine();
+
+                // Simulate JDBC insertion
+                Attendance record = new Attendance(id, date, status);
+                attendanceDB.add(record);
+
+                System.out.println("\n✅ Attendance saved successfully!");
+                System.out.println("Redirecting to confirmation page...");
+                System.out.println("\n--- Attendance Confirmation ---");
+                System.out.println("Student ID: " + id);
+                System.out.println("Date: " + date);
+                System.out.println("Status: " + status);
+                break;
+
+            case 2:
+                // Simulate Servlet displaying all attendance records
+                if (attendanceDB.isEmpty()) {
+                    System.out.println("\nNo attendance records available.");
+                } else {
+                    System.out.println("\n--- Attendance Records ---");
+                    System.out.printf("%-15s %-15s %-10s%n", "Student ID", "Date", "Status");
+                    System.out.println("--------------------------------------------");
+                    for (Attendance a : attendanceDB) {
+                        System.out.printf("%-15s %-15s %-10s%n", a.studentID, a.date, a.status);
+                    }
+                }
+                break;
+
+            default:
+                System.out.println("Invalid choice!");
+        }
+
+        sc.close();
+    }
+}
